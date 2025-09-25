@@ -17,6 +17,16 @@
                 <a href="{% url 'post_new' %}" class="top-menu">
                     {% include './icons/file-earmark-plus.svg' %}
                 </a>
+                <a href="{% url 'post_draft_list' %}" class="top-menu">
+                    {% include './icons/pencil-square.svg'%}
+                </a>
+                <form class="top-menu" method="post" action="{% url 'logout' %}" title="Log Out">
+                    {% csrf_token %}
+                    <button type="submit">{% include './icons/box-arrow-right.svg' %}</button>
+                </form>
+                <p class="top-menu">Hello: <span class="username">{{ user.username }}</span></p>
+            {% else %}
+            <a href="{% url 'login' %}" class="top-menu">{% include './icons/lock-fill.svg' %}</a>
             {% endif %}
             <h1><a href="/">Dave's Django Girls Blog</a></h1>
         </div>
